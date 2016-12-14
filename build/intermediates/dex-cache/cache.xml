@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/home/aman/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/24.2.1/support-annotations-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="/home/aman/bttest/app/build/intermediates/pre-dexed/debug/support-annotations-24.2.1_0635a65784fede381a8666717571643f99c4cd75.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/aman/bttest/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="/home/aman/bttest/app/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-24.2.1_908498251e65df289f4bf7805a0d4c58a4d5560e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/aman/bttest/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="/home/aman/bttest/app/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-24.2.1_fa600c9c051c2321715f01e4a5478aed16d30780.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/aman/bttest/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="/home/aman/bttest/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_ec7500c9c97065c7a48312218d11f032829c61ce.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/aman/bttest/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="/home/aman/bttest/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-24.2.1_b13c13d7e90a10f141b732259992ee37b0bc2267.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/aman/bttest/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="/home/aman/bttest/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-24.2.1_11f22b504095693749cd00d2410330a817d2de06.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/aman/bttest/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="/home/aman/bttest/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-24.2.1_fea693e8da6934c19729767587a80320e02baef7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/aman/bttest/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="/home/aman/bttest/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_3aca1a25e91b45881e61797a642a3cb12bbb39a4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/aman/bttest/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="9741a2ecb21d8583911dcb1eb71a06a2f87be256">
+        <dex dex="/home/aman/bttest/app/build/intermediates/pre-dexed/debug/instant-run_de4865d464becd4141ddf2fdc99580f8f63f1fda.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/aman/bttest/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="/home/aman/bttest/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-24.2.1_c920520d43ca4a57ee992768bdfbfca46130f3c8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/aman/bttest/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="/home/aman/bttest/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_6fa4cea660092f399c89864cb8e19d38c1597aec.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/aman/bttest/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="/home/aman/bttest/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_b36f1c49fd8f2def34625401814e708aa6b1e835.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/aman/bttest/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="/home/aman/bttest/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-24.2.1_4ec55689a349affc47c2c2175f5dc1ebf3022e6e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/aman/bttest/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="/home/aman/bttest/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_2f2f79ff4e1e9563ac1ae264cad0508ca063598b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/aman/bttest/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="/home/aman/bttest/app/build/intermediates/pre-dexed/debug/com.android.support-support-compat-24.2.1_ef987d20dac92d21926304119ee4fbab5378fbe8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/aman/bttest/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/home/aman/bttest/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-24.2.1_d32682387a995459a3c3161e1a9f9240cc4e8cd4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/aman/bttest/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.3"
+        sha1="ffb0a47a7343e46ce7c195519f548f41c44fc541">
+        <dex dex="/home/aman/bttest/app/build/intermediates/pre-dexed/debug/instant-run-bootstrap_2c01ed7486f7513f651d9f8e86425cd4cc398ba9.jar" />
+    </item>
+
+</items>
