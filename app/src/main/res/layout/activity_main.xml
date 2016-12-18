@@ -15,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textview"
-        android:textSize="35dp"
+        android:textSize="30dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
@@ -27,16 +27,7 @@
         android:layout_below="@+id/textview"
         android:layout_centerHorizontal="true"
         android:textColor="#ff7aff24"
-        android:textSize="35dp" />
-
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/listView"
-        android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/button"
-        android:layout_alignStart="@+id/button"
-        android:layout_below="@+id/textView2" />
+        android:textSize="20dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -52,41 +43,18 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Get visible"
-        android:onClick="visible"
-        android:id="@+id/button2"
-        android:layout_above="@+id/button4"
-        android:layout_alignParentEnd="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="Turn On"
         android:id="@+id/button"
-
         android:clickable="true"
         android:onClick="on"
-        android:layout_alignBaseline="@+id/button3"
-        android:layout_alignBottom="@+id/button3"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="12dp" />
+        android:layout_below="@id/textView"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="devices"
-        android:onClick="list"
-        android:id="@+id/button3"
-        android:layout_marginTop="16dp"
-        android:layout_below="@+id/textView"
-        android:layout_alignStart="@+id/button4" />
-
-    <Button
         android:text="search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/button4"
-        android:layout_alignStart="@+id/button2"
+        android:layout_below="@+id/button3"
+        android:layout_centerHorizontal="true"
         android:onClick="search"
         android:id="@+id/button5" />
 
@@ -96,8 +64,42 @@
         android:text="turn off"
         android:onClick="off"
         android:id="@+id/button4"
-        android:layout_marginTop="14dp"
-        android:layout_below="@+id/button3"
+        android:layout_below="@+id/button" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="devices"
+        android:onClick="list"
+        android:id="@+id/button3"
+        android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listView"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/button"
+        android:layout_alignStart="@+id/button"
+        android:layout_below="@+id/textView2" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get visible"
+        android:onClick="visible"
+        android:id="@+id/button2"
+        android:layout_below="@+id/textView"
+        android:layout_toEndOf="@+id/textView" />
+
+    <Button
+        android:text="R Data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button2"
+        android:layout_alignEnd="@+id/button2"
+        android:id="@+id/button6"
+        android:onClick="recieveData" />
 
 </RelativeLayout>

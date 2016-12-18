@@ -41,6 +41,8 @@ public class MainActivity extends Activity  {
     private ArrayAdapter mArrayAdapter;
     protected static final int SUCCESS_CONNECT = 0;
     protected static final int MESSAGE_READ = 1;
+    InputStream mmInStream;
+    OutputStream mmOutStream;
     String TAG = "com.example.aman.bttest";
     ListView lv;
     String currentItem=null;
@@ -55,15 +57,16 @@ public class MainActivity extends Activity  {
             super.handleMessage(msg);
             switch(msg.what){
                 case SUCCESS_CONNECT:
-                    // DO something
                     ConnectedThread connectedThread = new ConnectedThread((BluetoothSocket)msg.obj);
-                    Toast.makeText(getApplicationContext(), "CONNECT", Toast.LENGTH_SHORT).show();
-                    String s = "successfully connected";
+                    Log.i(TAG,"before cted.start()");
+                    String s = "successfully_connected#";
                     connectedThread.write(s.getBytes());
-                    Log.i(TAG, "connected");
+                    // connectedThread.start();
+                    Toast.makeText(getApplicationContext(), "CONNECT", Toast.LENGTH_SHORT).show();
                     break;
                 case MESSAGE_READ:
                     byte[] readBuf = (byte[])msg.obj;
+                    Log.i(TAG,"R data 3");
                     String string = new String(readBuf);
                     Toast.makeText(getApplicationContext(), string, Toast.LENGTH_SHORT).show();
                     break;
@@ -76,7 +79,8 @@ public class MainActivity extends Activity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         init();
-        b1 = (Button) findViewById(R.id.button);
+
+        b1=(Button)findViewById(R.id.button);
         b2=(Button)findViewById(R.id.button2);
         b3=(Button)findViewById(R.id.button3);
         b4=(Button)findViewById(R.id.button4);
@@ -131,13 +135,17 @@ public class MainActivity extends Activity  {
         final BroadcastReceiver rec;
         final ArrayList list = new ArrayList();
         BA.startDiscovery();
+        Log.i(TAG,"search start");
         rec = new BroadcastReceiver() {
             public void onReceive(Context context, Intent intent) {
+                unregisterReceiver(this);
+                Log.i(TAG,"123");
                 String action = intent.getAction();
                 //Finding devices
                 if (BluetoothDevice.ACTION_FOUND.equals(action))
                 {
                     // Get the BluetoothDevice object from the Intent
+                    Log.i(TAG,"searching");
                     BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
                     devices.add(device);
                     // Add the name and address to an array adapter to show in a ListView
@@ -156,7 +164,6 @@ public class MainActivity extends Activity  {
 
     public void list(View v){
         pairedDevices = BA.getBondedDevices();
-
         ArrayList list = new ArrayList();
 
         for(BluetoothDevice bt : pairedDevices) list.add(bt.getName());
@@ -199,36 +206,23 @@ public class MainActivity extends Activity  {
                 mmSocket.connect();
                 Log.i(TAG,"connection success");
             } catch (IOException connectException) {
-                // Unable to connect; close the socket and get out
-                Log.i(TAG,"connection fail" + connectException);
+                Log.i(TAG,"didn't connect ,try again " + connectException);
                 try {
 
-                  /*  Log.i(TAG,"trying fallback...");
-                    Class<?> clazz = mmSocket.getRemoteDevice().getClass();
-                    Class<?>[] paramTypes = new Class<?>[] {Integer.TYPE};
-                    Method m = clazz.getMethod("createRfcommSocket", paramTypes);
-                    Object[] params = new Object[] {Integer.valueOf(1)};
-                    mmSocket  = (BluetoothSocket) m.invoke(tmp.getRemoteDevice(), params);
-                    Thread.sleep(500);
-                    */
-                    // mmSocket = new FallbackBluetoothSocket(mmSocket.getUnderlyingSocket());
-                    //  Thread.sleep(500);
                     try {
                         mmSocket = (BluetoothSocket) mmDevice.getClass().getMethod("createRfcommSocket", new Class[]{int.class}).invoke(mmDevice, 1);
                     }catch (Exception e)
                     {
-
+                        Log.i(TAG,"error is : "+ e);
                     }
-                    // mmSocket = (BluetoothSocket) mmDevice.getClass().getMethod("gcjgcjg",new Class[]{}).invoke(mmDevice,1);
                     mmSocket.connect();
-                    Log.e("","Connected");
+                    Log.e(TAG,"Connected");
                     //  mmSocket.close();
                 } catch (IOException closeException) {
                     Log.i(TAG,"again connection issue");
                 }
-                return;
+                //return;  <---- see its requirements
             }
-
             // Do work to manage the connection (in a separate thread)
             //manageConnectedSocket(mmSocket);
             mHandler.obtainMessage(SUCCESS_CONNECT, mmSocket).sendToTarget();
@@ -244,36 +238,60 @@ public class MainActivity extends Activity  {
 
     private class ConnectedThread extends Thread {
         private final BluetoothSocket mmSocket;
-        private final InputStream mmInStream;
-        private final OutputStream mmOutStream;
+        //private final InputStream mmInStream;
+        //private final OutputStream mmOutStream;
 
         public ConnectedThread(BluetoothSocket socket) {
             mmSocket = socket;
             InputStream tmpIn = null;
             OutputStream tmpOut = null;
-
+            Log.i(TAG,"CT 1");
             // Get the input and output streams, using temp objects because
             // member streams are final
             try {
                 tmpIn = socket.getInputStream();
                 tmpOut = socket.getOutputStream();
+                Log.i(TAG,"CT 2");
             } catch (IOException e) {
+                Log.i(TAG,"inside connected thread exception");
             }
 
             mmInStream = tmpIn;
             mmOutStream = tmpOut;
+            Log.i(TAG,"CT 3");
         }
 
         public void run() {
-            byte[] buffer;  // buffer store for the stream
+            byte[] buffer = new byte[1024];
+            int begin = 0;
+            int bytes = 0;
+            while (true) {
+                try {
+                    bytes += mmInStream.read(buffer, bytes, buffer.length - bytes);
+                    for(int i = begin; i < bytes; i++) {
+                        if(buffer[i] == "#".getBytes()[0]) {
+                            mHandler.obtainMessage(MESSAGE_READ, begin, i, buffer).sendToTarget();
+                            begin = i + 1;
+                            if(i == bytes - 1) {
+                                bytes = 0;
+                                begin = 0;
+                            }
+                        }
+                    }
+                } catch (IOException e) {
+                    break;
+                }
+            }
+          /*  byte[] buffer;  // buffer store for the stream
             int bytes; // bytes returned from read()
-
+            Log.i(TAG,"CT run 2");
             // Keep listening to the InputStream until an exception occurs
             while (true) {
                 try {
                     // Read from the InputStream
                     buffer = new byte[1024];
                     bytes = mmInStream.read(buffer);
+                    Log.i(TAG,"CT run 3");
                     // Send the obtained bytes to the UI activity
                     mHandler.obtainMessage(MESSAGE_READ, bytes, -1, buffer)
                             .sendToTarget();
@@ -282,15 +300,79 @@ public class MainActivity extends Activity  {
                     break;
                 }
             }
+            */
         }
 
         /* Call this from the main activity to send data to the remote device */
         public void write(byte[] bytes) {
             try {
                 mmOutStream.write(bytes);
+                Log.i(TAG,"write 1");
+            } catch (IOException e) {
+                Log.i(TAG,"write exception");
+            }
+        }
+
+        /* Call this from the main activity to shutdown the connection */
+        public void cancel() {
+            try {
+                mmSocket.close();
             } catch (IOException e) {
             }
         }
     }
 
+    public void recieveData(View v) {
+        byte[] buffer = new byte[1024];
+        int begin = 0;
+        int bytes = 0;
+        while (true) {
+            try {
+                bytes += mmInStream.read(buffer, bytes, buffer.length - bytes);
+                for(int i = begin; i < bytes; i++) {
+                    if(buffer[i] == "#".getBytes()[0]) {
+                        mHandler.obtainMessage(MESSAGE_READ, begin, i, buffer).sendToTarget();
+                        begin = i + 1;
+                        if(i == bytes - 1) {
+                            bytes = 0;
+                            begin = 0;
+                        }
+                    }
+                }
+            } catch (IOException e) {
+                Log.i(TAG,"unable to recieve. Check the connection");
+                break;
+            }
+        }
+      /*  byte[] buffer;  // buffer store for the stream
+        int bytes;
+        while (true) {
+            try {
+                // Read from the InputStream
+                Log.i(TAG,"R data");
+                buffer = new byte[1024];
+                bytes = mmInStream.read(buffer);
+                Log.i(TAG,"R data 1");
+                mHandler.obtainMessage(MESSAGE_READ, bytes, -1, buffer)
+                        .sendToTarget();
+                Log.i(TAG,"R data 2");
+            } catch (IOException e) {
+                    Log.i(TAG,"" + e);
+                break;
+            }
+        }
+        */
+    }
+
 }
+
+/*  Log.i(TAG,"trying fallback...");
+                    Class<?> clazz = mmSocket.getRemoteDevice().getClass();
+                    Class<?>[] paramTypes = new Class<?>[] {Integer.TYPE};
+                    Method m = clazz.getMethod("createRfcommSocket", paramTypes);
+                    Object[] params = new Object[] {Integer.valueOf(1)};
+                    mmSocket  = (BluetoothSocket) m.invoke(tmp.getRemoteDevice(), params);
+                    Thread.sleep(500);
+                    */
+// mmSocket = new FallbackBluetoothSocket(mmSocket.getUnderlyingSocket());
+//  Thread.sleep(500);
